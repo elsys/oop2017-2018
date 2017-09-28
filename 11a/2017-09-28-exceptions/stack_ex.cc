@@ -24,7 +24,8 @@ public:
 	void push(int val) {
 		if(full()) {
 			cout << "OOOPS!!! Stack is full!" << endl;
-			throw StackError();
+			StackError ex;
+			throw ex;
 		}
 		data_[top_++] = val;
 	}
