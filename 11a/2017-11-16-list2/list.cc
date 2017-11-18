@@ -149,6 +149,15 @@ public:
 	
 	iterator erase(iterator it);
 	*/
+	
+	/*
+	class const_iterator {
+	
+	};
+
+	const_iterator begin() const;
+	const_iterator end() const;
+	*/
 };
 
 
