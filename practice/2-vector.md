@@ -115,7 +115,7 @@ public:
 	class iterator {
 	...
 	public:
-		iterator operator++();
+		iterator& operator++();
 		iterator operator++(int);
 		bool operator==(const iterator& other) const;
 		bool operator!=(const iterator& other) const;
@@ -143,7 +143,7 @@ public:
 	class const_iterator {
 	...
 	public:
-		iterator operator++();
+		iterator& operator++();
 		iterator operator++(int);
 		bool operator==(const iterator& other) const;
 		bool operator!=(const iterator& other) const;
