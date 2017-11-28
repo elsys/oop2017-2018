@@ -1,5 +1,6 @@
 #include <iostream>
 #include <string>
+#include <list>
 
 using namespace std;
 
@@ -26,7 +27,7 @@ public:
 		return id_;
 	}
 	
-	void print() const {
+	virtual void print() const {
 		cout << "Emp:\t" << name_ << "\t" << id_ << endl;
 	}
 
@@ -66,6 +67,22 @@ int main() {
 	Manager m1 = Manager("pesho",10001, 1);
 	m1.print();
 	
+
+	list<Employee*> employees;
+	employees.push_back(&e1);
+	employees.push_back(&m1);
+	
+	for(list<Employee*>::iterator it = employees.begin();
+		it!=employees.end(); ++it) {
+	
+		cout << (*it) -> get_name() << " " 
+			<< (*it) -> get_id() << endl;
+		
+		// (*it) -> get_level();
+		
+		(*it) -> print();
+		
+	}
 
 	return 0;
 }

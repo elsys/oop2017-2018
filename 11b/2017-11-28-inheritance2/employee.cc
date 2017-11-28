@@ -39,7 +39,7 @@ public:
     return level_;
   }
   
-  virtual void print() const {
+  void print() const {
     cout << "Manager " << get_id() << ", level " << get_level() << ": "
          << get_name() << endl;
   }
