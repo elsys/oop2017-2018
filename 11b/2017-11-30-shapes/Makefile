@@ -1,10 +1,10 @@
 all: shapes
 
-point.o: point.cc point.hh
+point.o: point.cc
 
-circle.o: circle.cc circle.hh point.hh
+circle.o: circle.cc
 
-shapes.o: shapes.cc point.hh
+shapes.o: shapes.cc
 
 shapes: point.o circle.o shapes.o
 	g++ -o shapes point.o circle.o shapes.o
