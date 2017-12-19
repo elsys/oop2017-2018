@@ -14,6 +14,9 @@ class Calculator {
 	std::vector<Operation*> operations_;
 	std::vector<double> stack_;
 	
+	void add_macro(const std::string& token,
+				std::istream& in);
+	
 public:
 	Calculator();
 
