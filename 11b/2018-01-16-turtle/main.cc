@@ -5,15 +5,14 @@
 using namespace std;
 
 int main() {
-	PSTurtle t;
-
-	Point p1 = Point::polar(0, 100);
-	Point p2 = Point::polar(90, 100);
-	Point p3 = Point::polar(180, 100);
+	PSTurtle t(500, 500);
+	t.setup();
 	
-	cout << p1 << endl;
-	cout << p2 << endl;
-	cout << p3 << endl;
+	t.moveto(Point(100,0))
+	.moveto(Point(100,100))
+	.moveto(Point(0,100))
+	.moveto(Point(0,0));
+	
 
 	return 0;
 }

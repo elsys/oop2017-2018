@@ -35,3 +35,30 @@ ostream& operator<<(ostream& out, const Point& p) {
 }
 
 
+void PSTurtle::setup() {
+	out_ << "%!PS-Adobe-3.0 EPSF-3.0" << endl;
+   	out_ << "%%Creator: turtle" << endl;
+	out_ << "%%DocumentData: Clean7Bit" << endl;
+   	out_ << "%%Origin: 0 0" << endl;
+   	out_ << "%%BoundingBox: 0 0 " 
+   		<< get_width() << " " << get_height() << endl;
+   	out_ << "%%LanguageLevel: 2" << endl;
+   	out_ << "%%Pages: 1" << endl;
+   	out_ << "%%Page: 1 1" << endl;
+
+	out_ << "newpath" << endl;
+	out_ << "0 0 " << "moveto" << endl;
+}
+
+
+PSTurtle::~PSTurtle() {
+	out_ << "stroke" << endl;
+	out_ << "%%EOF" << endl;
+}
+
+Turtle& PSTurtle::moveto(const Point& new_pos) {
+	
+	out_ << new_pos << " " << "lineto" << endl;
+	Turtle::moveto(new_pos);
+	return *this;
+}
