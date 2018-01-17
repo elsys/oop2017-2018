@@ -27,7 +27,7 @@ std::ostream& operator<<(std::ostream& out, const Point& p);
 
 ## Цвят
 
-```
+```cpp
 class Color {
 	double r_, g_, b_;
 public:
