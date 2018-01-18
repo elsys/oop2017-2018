@@ -66,6 +66,7 @@ Turtle& PSTurtle::moveto(const Point& next_pos) {
 		out_ << "moveto";
 	}
 	out_ << endl;
+    Turtle::moveto(next_pos);
 	return *this;
 }
 
