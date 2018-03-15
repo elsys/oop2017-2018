@@ -10,7 +10,7 @@ public class CosTest extends CalculatorAbstractTest {
 		input("cos");
 		inputCtrlC();
 		runCalculator();
-		assertCalculatorLastValue(Math.sin(10));
+		assertCalculatorLastValue(Math.cos(10));
 	}
 
 }
