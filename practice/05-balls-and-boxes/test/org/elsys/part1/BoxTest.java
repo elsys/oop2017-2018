@@ -10,11 +10,11 @@ import org.junit.Test;
 
 public class BoxTest {
 
-	@Test
+	@Test(expected = BallContainerException.class)
 	public void testMaxCapacity() {
 		Box box = new Box(10);
 		assertTrue(box.add(new Ball(5)));
-		assertFalse(box.add(new Ball(6)));
+		box.add(new Ball(6));
 	}
 
 	@Test
