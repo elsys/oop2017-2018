@@ -6,6 +6,9 @@
 и 
 [https://github.com/elsys/oop2017-2018/tree/master/11b/2018-03-22-gates](https://github.com/elsys/oop2017-2018/tree/master/11b/2018-03-22-gates).
 
+Идеята за упражнението е частично заимствана от книгата:
+[Harold Abelson, Gerald Jay Sussman, "Structure and Interpretation of Computer Programs"](https://github.com/elsys/oop2017-2018/blob/master/practice/08-gates/docs/StructIntCompPrograms.pdf).
+
 За целите на упражнението и домашното трябва да използвате от приложеният стартов проект
 [https://github.com/elsys/oop2017-2018/tree/master/practice/08-gates](https://github.com/elsys/oop2017-2018/tree/master/practice/08-gates), 
 а не проектите разбработени в клас.
