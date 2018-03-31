@@ -13,7 +13,7 @@ public abstract class BinaryGate extends AbstractGate {
 
 		addInput(in1);
 		addInput(in2);
-		addInput(out);
+		addOutput(out);
 	}
 	
 	protected Wire getIn1() {
