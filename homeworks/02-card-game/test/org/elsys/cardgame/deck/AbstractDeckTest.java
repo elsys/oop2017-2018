@@ -49,8 +49,7 @@ public abstract class AbstractDeckTest {
 
 		clearDeck.getCards().removeAll(hand.getCards());
 		assertTrue("Cards left in deck are incorrect", clearDeck.getCards().equals(deck.getCards()));
-		Collections.reverse(hand.getCards());
-		deck.getCards().addAll(hand.getCards());
+		deck.getCards().addAll(0,hand.getCards());
 		assertTrue("Cards left in hand are incorrect", defaultDeck().getCards().equals(deck.getCards()));
 	}
 
