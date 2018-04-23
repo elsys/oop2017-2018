@@ -1,8 +1,11 @@
+
 package org.elsys.cardgame.deck;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotEquals;
+import static org.junit.Assert.assertTrue;
 
+import java.util.Collections;
 import java.util.List;
 
 import org.elsys.cardgame.api.Card;
@@ -41,17 +44,20 @@ public abstract class AbstractDeckTest {
 	@Test
 	public void testDeal() {
 		Hand hand = deck.deal();
-		assertEquals("Hand size is correct", handSize(), hand.size());
-		assertEquals("New size of deck is correct", deckSize() - handSize(), deck.size());
-		assertEquals("Cards left in deck are correct", clearDeck.getCards().removeAll(hand.getCards()),
-				deck.getCards());
-		assertEquals("Cards in hand are correct", clearDeck.getCards(), hand.getCards().addAll(deck.getCards()));
+		assertEquals("Hand size is incorrect", handSize(), hand.size());
+		assertEquals("New size of deck is incorrect", deckSize() - handSize(), deck.size());
+
+		clearDeck.getCards().removeAll(hand.getCards());
+		assertTrue("Cards left in deck are incorrect", clearDeck.getCards().equals(deck.getCards()));
+		Collections.reverse(hand.getCards());
+		deck.getCards().addAll(hand.getCards());
+		assertTrue("Cards left in hand are incorrect", defaultDeck().getCards().equals(deck.getCards()));
 	}
 
 	@Test
 	public void testShuffle() {
 		deck.shuffle();
-		assertNotEquals("Shuffle works correctly", clearDeck.getCards(), deck.getCards());
+		assertNotEquals("Shuffle doesn't works", clearDeck.getCards(), deck.getCards());
 	}
 
 	@Test
@@ -64,17 +70,17 @@ public abstract class AbstractDeckTest {
 	@Test
 	public void testDrawTopCard() {
 		Card card = deck.drawTopCard();
-		assertEquals("Deck size is correct", deckSize() - 1, deck.size());
-		assertEquals("Card rank is correct", orderedRanks().get(0), card.getRank());
-		assertEquals("Card suit is correct", Suit.CLUBS, card.getSuit());
+		assertEquals("Deck size is incorrect", deckSize() - 1, deck.size());
+		assertEquals("Card rank is incorrect", orderedRanks().get(0), card.getRank());
+		assertEquals("Card suit is incorrect", Suit.CLUBS, card.getSuit());
 	}
 
 	@Test
 	public void testTopCard() {
 		Card card = deck.topCard();
-		assertEquals("Deck size is correct", deckSize(), deck.size());
-		assertEquals("Card is correct", orderedRanks().get(0), card.getRank());
-		assertEquals("Card suit is correct", Suit.CLUBS, card.getSuit());
+		assertEquals("Deck size is incorrect", deckSize(), deck.size());
+		assertEquals("Card is incorrect", orderedRanks().get(0), card.getRank());
+		assertEquals("Card suit is incorrect", Suit.CLUBS, card.getSuit());
 	}
 
 	@Test
@@ -88,11 +94,11 @@ public abstract class AbstractDeckTest {
 
 	@Test
 	public void testBottomCard() {
-		Card card = deck.drawTopCard();
-		assertEquals("Deck size is correct", deckSize() - 1, deck.size());
+		Card card = deck.bottomCard();
+		assertEquals("Deck size is incorrect", deckSize(), deck.size());
 		List<Rank> ranks = orderedRanks();
-		assertEquals("Card is correct", ranks.get(ranks.size() - 1), card.getRank());
-		assertEquals("Card suit is correct", Suit.SPADES, card.getSuit());
+		assertEquals("Card is incorrect", ranks.get(ranks.size() - 1), card.getRank());
+		assertEquals("Card suit is incorrect", Suit.SPADES, card.getSuit());
 	}
 
 }
