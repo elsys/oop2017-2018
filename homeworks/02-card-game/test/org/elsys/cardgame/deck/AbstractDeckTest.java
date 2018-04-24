@@ -43,9 +43,12 @@ public abstract class AbstractDeckTest {
 		Hand hand = deck.deal();
 		assertEquals("Hand size is correct", handSize(), hand.size());
 		assertEquals("New size of deck is correct", deckSize() - handSize(), deck.size());
-		assertEquals("Cards left in deck are correct", clearDeck.getCards().removeAll(hand.getCards()),
-				deck.getCards());
-		assertEquals("Cards in hand are correct", clearDeck.getCards(), hand.getCards().addAll(deck.getCards()));
+
+		clearDeck.getCards().removeAll(hand.getCards());
+		assertEquals("Cards left in deck are correct", clearDeck.getCards(), deck.getCards());
+
+		hand.getCards().addAll(deck.getCards());
+		assertEquals("Cards in hand are correct", defaultDeck().getCards(), hand.getCards());
 	}
 
 	@Test
@@ -88,8 +91,8 @@ public abstract class AbstractDeckTest {
 
 	@Test
 	public void testBottomCard() {
-		Card card = deck.drawTopCard();
-		assertEquals("Deck size is correct", deckSize() - 1, deck.size());
+		Card card = deck.bottomCard();
+		assertEquals("Deck size is correct", deckSize(), deck.size());
 		List<Rank> ranks = orderedRanks();
 		assertEquals("Card is correct", ranks.get(ranks.size() - 1), card.getRank());
 		assertEquals("Card suit is correct", Suit.SPADES, card.getSuit());
