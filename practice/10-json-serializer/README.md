@@ -111,13 +111,13 @@ public class Student {
 ```java
 public class Student {
     
-    @MapBy("first_name")
+    @MapAs("first_name")
     private String name;
     
-    @MapBy("last_name")
+    @MapAs("last_name")
     private String lastName;
     
-    @MapBy("father_name")
+    @MapAs("father_name")
     private String fatherName;
 
     private List<Integer> grades;
