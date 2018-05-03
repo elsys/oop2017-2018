@@ -24,6 +24,7 @@ public abstract class AbstractGameTest {
 
 	public abstract int handSize();
 
+    @Before
 	public void before() {
 		Deck deck = defaultDeck();
 		deck.shuffle();
