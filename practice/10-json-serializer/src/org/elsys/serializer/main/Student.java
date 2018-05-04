@@ -2,19 +2,19 @@ package org.elsys.serializer.main;
 
 import java.util.List;
 
-import org.elsys.serializer.MapBy;
+import org.elsys.serializer.MapAs;
 
 public class Student {
 	
-	@MapBy("first_name")
+	@MapAs("first_name")
 	private String name;
 	
-	@MapBy("last_name")
+	@MapAs("last_name")
 	private String lastName;
 	
 	private List<Integer> grades;
 	
-	@MapBy("father_name")
+	@MapAs("father_name")
 	private String fatherName;
 
 	public String getName() {
