@@ -3,7 +3,7 @@ package org.elsys.cardgame.game;
 import static org.junit.Assert.*;
 
 import java.util.List;
-
+import org.junit.Before;
 import org.elsys.cardgame.api.Card;
 import org.elsys.cardgame.api.CardException;
 import org.elsys.cardgame.api.Deck;
