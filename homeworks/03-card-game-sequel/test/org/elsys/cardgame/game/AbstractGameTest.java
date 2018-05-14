@@ -2,12 +2,14 @@ package org.elsys.cardgame.game;
 
 import static org.junit.Assert.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.elsys.cardgame.api.Card;
 import org.elsys.cardgame.api.CardException;
 import org.elsys.cardgame.api.Deck;
 import org.elsys.cardgame.api.Game;
+import org.junit.Before;
 import org.junit.Test;
 
 public abstract class AbstractGameTest {
@@ -24,11 +26,12 @@ public abstract class AbstractGameTest {
 
 	public abstract int handSize();
 
+    @Before
 	public void before() {
 		Deck deck = defaultDeck();
 		deck.shuffle();
 		clearDeck = deck.getCards();
-		game = createGame(clearDeck);
+		game = createGame(new ArrayList<>(clearDeck));
 	}
 
 	@Test
