@@ -19,6 +19,19 @@ public interface Criteria {
 
 	/**
 	 * Creates new Criteria instance for matching {@link Task}s with the given
+	 * description.
+	 * 
+	 * @param description
+	 * @param exact
+	 * @return the new Criteria instance
+	 */
+	public static Criteria description(String description, boolean exact) {
+		// TODO implement me
+		return null;
+	}
+	
+	/**
+	 * Creates new Criteria instance for matching {@link Task}s with the given
 	 * priority.
 	 * 
 	 * @param priority
