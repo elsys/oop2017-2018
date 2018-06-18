@@ -1,17 +1,19 @@
 package org.elsys.gallery;
 
-import static org.junit.jupiter.api.Assertions.*;
+
+import static org.junit.Assert.*;
 
 import java.util.Arrays;
 import java.util.List;
 
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
+import org.junit.Before;
+import org.junit.Test;
+
 
 class ModernGalleryTest {
 	private ModernGallery gallery;
 
-	@BeforeEach
+	@Before
 	public void setUp() {
 		gallery = new ModernGallery(10);
 	}
@@ -21,14 +23,12 @@ class ModernGalleryTest {
 		assertTrue(gallery.add(new Painting("A", "T", 1, 1)));
 	}
 
-	@Test
+	@Test(expected = RuntimeException.class)
 	public void testAddForgery() {
 		assertTrue(gallery.add(new Painting("A", "T", 1, 1)));
 		assertTrue(gallery.add(new Painting("B", "T", 1, 1)));
 		assertTrue(gallery.add(new Painting("A", "U", 1, 1)));
-		assertThrows(RuntimeException.class, () -> {
-			gallery.add(new Painting("A", "T", 3, 2));
-		});
+		gallery.add(new Painting("A", "T", 3, 2));
 	}
 
 	@Test
@@ -70,10 +70,13 @@ class ModernGalleryTest {
 		assertTrue(gallery.add(new Painting("A", "T", 1, 5)));
 		assertTrue(gallery.add(new Painting("B", "U", 2, 5)));
 
-		assertThrows(RuntimeException.class, () -> {
+		try {
 			gallery.monthlyPurchase(Arrays.asList(new Painting("C", "V", 1900, 9),
 					new Painting("C", "X", 1901, 1)));
-		});
+			assertTrue(false);
+		} catch (RuntimeException e) {
+			
+		}
 
 		assertFalse(gallery.contains(new Painting("C", "V", 3, 9)));
 		assertFalse(gallery.contains(new Painting("C", "X", 3, 9)));
@@ -84,10 +87,13 @@ class ModernGalleryTest {
 		assertTrue(gallery.add(new Painting("A", "T", 1, 5)));
 		assertTrue(gallery.add(new Painting("B", "U", 2, 5)));
 
-		assertThrows(RuntimeException.class, () -> {
+		try {
 			gallery.monthlyPurchase(Arrays.asList(new Painting("C", "V", 1900, 9),
 					new Painting("C", "X", 1899, 1)));
-		});
+			assertTrue(false);
+		} catch (RuntimeException e) {
+			
+		}
 
 		assertFalse(gallery.contains(new Painting("C", "V", 3, 9)));
 		assertFalse(gallery.contains(new Painting("C", "X", 3, 9)));
